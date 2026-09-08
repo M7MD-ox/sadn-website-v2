@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "grillme": {
+      "source": "jekudy/grillme-skill",
+      "sourceType": "github",
+      "skillPath": "skills/grillme/SKILL.md",
+      "computedHash": "066b5884ed69657df970e285191758f7ebdcba83a5701916118f988d080dd9d2"
+    }
+  }
+}

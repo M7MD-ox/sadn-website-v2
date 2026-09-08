@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 120" role="img" aria-label="SADN — سدن">
+  <!-- SADN (سدن) typographic wordmark — luxury, minimal, transparent bg -->
+  <g fill="#52314e">
+    <text
+      x="120"
+      y="62"
+      text-anchor="middle"
+      font-family="'Thmanyah Display', Didot, 'Bodoni MT', 'Cormorant Garamond', Georgia, serif"
+      font-size="44"
+      font-weight="400"
+      letter-spacing="12"
+    >SADN</text>
+    <text
+      x="124"
+      y="98"
+      text-anchor="middle"
+      font-family="'Thmanyah Display', Didot, 'Bodoni MT', 'Cormorant Garamond', Georgia, serif"
+      font-size="22"
+      font-weight="400"
+      letter-spacing="2"
+    >سدن</text>
+  </g>
+</svg>

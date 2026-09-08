@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#EFE9E1"/>
+  <!-- Header -->
+  <rect width="1600" height="110" fill="#075E54"/>
+  <polyline points="58,42 34,55 58,68" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="140" cy="55" r="40" fill="#FFFFFF"/>
+  <text x="140" y="70" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="42" font-weight="700" fill="#4B3249">S</text>
+  <text x="205" y="48" font-family="'Segoe UI', Arial, sans-serif" font-size="34" font-weight="700" fill="#FFFFFF">SADN · سدن</text>
+  <text x="205" y="86" font-family="'Segoe UI', Arial, sans-serif" font-size="24" fill="#B8E0DB">متصل</text>
+  <circle cx="1500" cy="42" r="6" fill="#FFFFFF"/><circle cx="1500" cy="62" r="6" fill="#FFFFFF"/><circle cx="1500" cy="82" r="6" fill="#FFFFFF"/>
+  <!-- Incoming bubble 1 -->
+  <rect x="36" y="150" width="560" height="150" rx="26" fill="#FFFFFF"/>
+  <text x="66" y="212" font-family="'Segoe UI', Arial, sans-serif" font-size="32" fill="#111B21">العباية وصلتني اليوم 🤍</text>
+  <text x="66" y="262" font-family="'Segoe UI', Arial, sans-serif" font-size="32" fill="#111B21">القماش ثقيل وراقي جداً</text>
+  <text x="545" y="284" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="23" fill="#667781">2:14 PM</text>
+  <!-- Incoming bubble 2 -->
+  <rect x="36" y="330" width="820" height="150" rx="26" fill="#FFFFFF"/>
+  <text x="66" y="392" font-family="'Segoe UI', Arial, sans-serif" font-size="32" fill="#111B21">والمقاس واسع زي ما قلتيلي بالظبط،</text>
+  <text x="66" y="442" font-family="'Segoe UI', Arial, sans-serif" font-size="32" fill="#111B21">القصّة مريحة ومنسدلة على الجسم</text>
+  <text x="805" y="464" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="23" fill="#667781">2:15 PM</text>
+  <!-- Incoming bubble 3 -->
+  <rect x="36" y="510" width="640" height="100" rx="26" fill="#FFFFFF"/>
+  <text x="66" y="572" font-family="'Segoe UI', Arial, sans-serif" font-size="32" fill="#111B21">تسلم إيدك، الجودة تستاهل 👌🏻</text>
+  <text x="625" y="594" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="23" fill="#667781">2:15 PM</text>
+  <!-- Outgoing bubble -->
+  <rect x="760" y="650" width="800" height="100" rx="26" fill="#D9FDD3"/>
+  <text x="790" y="712" font-family="'Segoe UI', Arial, sans-serif" font-size="32" fill="#111B21">سعداء جداً إنها عجبتك 🕊️ استني الجديد</text>
+  <polyline points="1478,726 1490,732 1478,738" fill="none" stroke="#53BDEB" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="1492,726 1504,732 1492,738" fill="none" stroke="#53BDEB" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="1470" y="734" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="23" fill="#667781">2:17 PM</text>
+  <!-- Input bar -->
+  <rect x="30" y="800" width="1330" height="76" rx="38" fill="#FFFFFF" stroke="#E0DCD4" stroke-width="2"/>
+  <text x="76" y="848" font-family="'Segoe UI', Arial, sans-serif" font-size="30" fill="#8696A0">اكتب رسالة</text>
+  <circle cx="1450" cy="838" r="38" fill="#00A884"/>
+  <text x="1450" y="851" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="32" fill="#FFFFFF">🎤</text>
+</svg>

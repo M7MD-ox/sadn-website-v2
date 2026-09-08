@@ -1,0 +1,11 @@
+# Excluded from Vercel deploys — dev-only / raw material, the app never
+# reads them at runtime (runtime data lives in Supabase).
+upload/
+db/
+qa/
+scripts/
+supabase/
+dev.log
+server.log
+*.md
+tool-results/

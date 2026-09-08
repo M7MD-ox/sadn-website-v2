@@ -1,0 +1,1013 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  /* Round 10: Thmanyah Sans leads the UI stack (EN + AR in one family).
+     Geist stays as the chain-in fallback for any glyph coverage gaps. */
+  --font-sans: "Thmanyah Sans", var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  /* Round 16 (owner: "كل حواف العناصر مربعه بدل دائريه") — a fully square
+     design language. Every shadcn/radix component keys off --radius, so 0
+     squares the whole system; ad-hoc Tailwind rounded-* classes were
+     replaced with rounded-none across the storefront + dashboard. */
+  --radius: 0rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ── SADN Brand Layer ──
+   Additive design foundation for SADN (سدن) — premium,
+   minimalist, white, app-style e-commerce.
+   Everything below is ADDITIVE: the shadcn/Tailwind v4
+   structure above remains intact. Brand tokens are declared
+   here and rewire the default theme purely via cascade order
+   (a later :root block wins), so rollback = delete this layer.
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── SADN Brand Tokens — deep muted purple scale ──
+   PRIMARY BRAND = --sadn-plum-800 (#52314e) */
+:root {
+  /* Plum scale */
+  --sadn-plum-950: #2A1C28; /* ink-deep, near-black plum */
+  --sadn-plum-900: #3A2637;
+  --sadn-plum-800: #52314e; /* PRIMARY BRAND (round 36 — owner) */
+  --sadn-plum-700: #5C405A;
+  --sadn-plum-600: #6E4F6B;
+  --sadn-plum-400: #A388A0;
+  --sadn-plum-200: #D5C7D2;
+  --sadn-plum-100: #EDE6EB;
+  --sadn-plum-50: #F7F4F6;
+
+  /* Warm neutrals (secondary surfaces) */
+  --sadn-ivory: #FAF8F6;
+  --sadn-stone: #F1EDE9;
+  /* Round 39 (owner): SECONDARY BRAND — warm cream. The storefront page
+     base in light mode (#fefaef). */
+  --sadn-cream: #fefaef;
+
+  /* Text */
+  --sadn-ink: #1C1719;
+  --sadn-ink-soft: #6B6266;
+
+  /* Page canvas (round 13 — dark-mode aware) */
+  --sadn-canvas: #FFFFFF;
+}
+
+/* ── SADN dark mode (round 13 — owner: "ضيف زرار في الهيدر دارك مود") ──
+   The storefront palette flips to a warm plum-black. Brand-deep tokens
+   (plum-800/700) lift a step so white-on-brand buttons and price text stay
+   readable on the dark canvas; the scale's light end becomes surfaces. */
+.dark {
+  --sadn-plum-950: #120D10;
+  --sadn-plum-900: #1B1420;
+  --sadn-plum-800: #7A5673;
+  --sadn-plum-700: #8B6584;
+  --sadn-plum-600: #A2869C;
+  --sadn-plum-400: #BCA7B3;
+  --sadn-plum-200: #3E3140;
+  --sadn-plum-100: #2C2229;
+  --sadn-plum-50: #221B21;
+  --sadn-ivory: #191317;
+  --sadn-stone: #1D171B;
+  --sadn-cream: #1B141A;
+  --sadn-ink: #F1E9EE;
+  --sadn-ink-soft: #A79CA3;
+  --sadn-canvas: #151013;
+  color-scheme: dark;
+}
+
+/* ── SADN → shadcn token rewiring (additive override) ──
+   Same specificity, later in source → wins the cascade.
+   Original values above are kept untouched for rollback. */
+:root {
+  --background: #FFFFFF; /* stays pure white */
+  --foreground: var(--sadn-ink);
+  --primary: var(--sadn-plum-800);
+  --primary-foreground: #FFFFFF;
+  --ring: var(--sadn-plum-400);
+  --accent: var(--sadn-plum-50);
+  --accent-foreground: var(--sadn-plum-800);
+  --muted-foreground: var(--sadn-ink-soft);
+}
+
+/* ── SADN Tailwind v4 theme mapping ──
+   Generates brand utilities: bg-sadn-plum-800, text-sadn-ink,
+   bg-sadn-ivory, bg-sadn-stone, border-sadn-plum-100, … */
+@theme inline {
+  --color-sadn-plum-950: var(--sadn-plum-950);
+  --color-sadn-plum-900: var(--sadn-plum-900);
+  --color-sadn-plum-800: var(--sadn-plum-800);
+  --color-sadn-plum-700: var(--sadn-plum-700);
+  --color-sadn-plum-600: var(--sadn-plum-600);
+  --color-sadn-plum-400: var(--sadn-plum-400);
+  --color-sadn-plum-200: var(--sadn-plum-200);
+  --color-sadn-plum-100: var(--sadn-plum-100);
+  --color-sadn-plum-50: var(--sadn-plum-50);
+  --color-sadn-ivory: var(--sadn-ivory);
+  --color-sadn-stone: var(--sadn-stone);
+  --color-sadn-cream: var(--sadn-cream);
+  --color-sadn-ink: var(--sadn-ink);
+  --color-sadn-ink-soft: var(--sadn-ink-soft);
+  --color-sadn-canvas: var(--sadn-canvas);
+}
+
+/* ── SADN Typography scaffolding (round 10) ──
+   REAL brand fonts delivered: Thmanyah typeface (user-provided OTF family).
+   Two faces are wired, each covering BOTH Arabic and Latin in one file per
+   weight (no unicode-range split needed):
+     • "Thmanyah Sans"  → body/UI (5 weights: 300 400 500 700 900)
+     • "Thmanyah Display" → headings/display (5 weights, serif display cut)
+   Static-weight faces are declared with weight RANGES so 600/800 requests
+   resolve to real glyphs instead of synthetic bolding:
+     Light=300, Regular=400, Medium=500–600, Bold=700–800, Black=900.
+   font-display: swap + the previous families kept as fallbacks in the stacks. */
+@font-face {
+  font-family: "Thmanyah Sans";
+  src: url("/fonts/thmanyah/thmanyah-sans-300.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Thmanyah Sans";
+  src: url("/fonts/thmanyah/thmanyah-sans-400.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Thmanyah Sans";
+  src: url("/fonts/thmanyah/thmanyah-sans-500.otf") format("opentype");
+  font-weight: 500 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Thmanyah Sans";
+  src: url("/fonts/thmanyah/thmanyah-sans-700.otf") format("opentype");
+  font-weight: 700 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Thmanyah Sans";
+  src: url("/fonts/thmanyah/thmanyah-sans-900.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Thmanyah Display";
+  src: url("/fonts/thmanyah/thmanyah-display-300.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Thmanyah Display";
+  src: url("/fonts/thmanyah/thmanyah-display-400.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Thmanyah Display";
+  src: url("/fonts/thmanyah/thmanyah-display-500.otf") format("opentype");
+  font-weight: 500 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Thmanyah Display";
+  src: url("/fonts/thmanyah/thmanyah-display-700.otf") format("opentype");
+  font-weight: 700 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Thmanyah Display";
+  src: url("/fonts/thmanyah/thmanyah-display-900.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Display/heading face — Thmanyah Display exclusively */
+  --font-display: "Thmanyah Display", Georgia, serif;
+  /* Body face — Thmanyah Sans covers EN + AR alike */
+  --font-body: "Thmanyah Sans", ui-sans-serif, system-ui, "Segoe UI", Tahoma, sans-serif;
+}
+
+@theme inline {
+  /* → utility: font-sadn-display */
+  --font-sadn-display: var(--font-display);
+}
+
+/* Round 10: literal body stack — the Tailwind preflight html rule chains
+   var(--font-geist-sans), which is only registered on <body>, so the whole
+   declaration was invalid at computed-value time and EN fell back to the
+   generic ui-sans-serif stack. A literal var(--font-body) (defined on
+   :root) applies Thmanyah Sans to the whole shell in both scripts. */
+body {
+  font-family: var(--font-body);
+}
+
+/* Editorial tracking helpers (unlayered → beat TW tracking-*) */
+.tracking-luxe {
+  letter-spacing: 0.28em;
+}
+.tracking-luxe-tight {
+  letter-spacing: 0.14em;
+}
+
+/* ── SADN Premium micro-details ── */
+
+/* Branded text selection */
+::selection {
+  background: var(--sadn-plum-800);
+  color: #ffffff;
+}
+
+/* Elegant thin scrollbar — near-invisible track, plum thumb */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--sadn-plum-200) transparent;
+}
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--sadn-plum-200);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--sadn-plum-400);
+}
+
+/* Focus ring: plum-400 with proper offset */
+:focus-visible {
+  outline: 2px solid var(--sadn-plum-400);
+  outline-offset: 2px;
+}
+
+/* Safe-area helpers (notch / home indicator) */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Touch accessibility — 44×44 minimum hit area */
+.tap-target {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+/* ── SADN App shell: fixed bottom navigation ──
+   Ready-made styles for the future bottom nav component. */
+.app-nav-shell {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: color-mix(in oklab, var(--sadn-canvas) 85%, transparent);
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+  border-top: 1px solid var(--sadn-plum-100);
+  box-shadow: 0 -8px 30px rgb(42 28 40 / 0.06);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.app-nav-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-width: 44px;
+  min-height: 44px;
+  color: var(--sadn-ink-soft);
+  transition: color 200ms ease;
+}
+
+/* text-wrap helpers — NOTE: `text-balance` and `text-pretty`
+   ship natively as Tailwind CSS v4 utilities; no local
+   redefinition is needed. */
+
+/* Barely-there paper grain — essentially white, premium feel */
+.bg-grain {
+  background-image:
+    radial-gradient(rgba(75, 50, 73, 0.025) 1px, transparent 1px),
+    radial-gradient(rgba(75, 50, 73, 0.018) 1px, transparent 1px);
+  background-size:
+    3px 3px,
+    5px 5px;
+  background-position:
+    0 0,
+    2px 3px;
+}
+
+/* ── Reduced-motion guard (future GSAP / Anime.js work) ──
+   Pattern agreed for later: add an `.anim-ready` class on
+   <html> ONLY when matchMedia('(prefers-reduced-motion:
+   no-preference)').matches is true, and gate all JS-driven
+   GSAP/Anime entrances behind it. Declarative [data-animate]
+   elements are neutralized below for users who prefer
+   reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  [data-animate] {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* ── SADN Motion Utilities (round 2) ── */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes sadn-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.sadn-marquee {
+  animation: sadn-marquee 26s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sadn-marquee {
+    animation: none;
+  }
+}
+
+/* ── SADN Polish Layer (round 3) ────────────────────────────────────────
+   Additive utility layer: skeleton shimmer, tap feedback, desktop card
+   lift, hairline dividers, and edge-fade masks for horizontal scrollers.
+   100% append-only — delete this block to roll back. */
+
+/* .shimmer — skeleton loading sweep.
+   Pair with a muted base (e.g. `shimmer bg-sadn-plum-100`); the ::after
+   band sweeps a plum-100 → plum-50 → plum-100 gradient across. Gated on
+   prefers-reduced-motion (band rests off-canvas when motion is reduced). */
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    var(--sadn-plum-100),
+    var(--sadn-plum-50),
+    var(--sadn-plum-100)
+  );
+  pointer-events: none;
+}
+@keyframes sadn-shimmer {
+  to {
+    transform: translateX(100%);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .shimmer::after {
+    animation: sadn-shimmer 1.4s ease-in-out infinite;
+  }
+}
+
+/* .press — tactile scale-down while the pointer is down (tap feedback) */
+.press {
+  transition: transform 0.15s ease;
+}
+.press:active {
+  transform: scale(0.97);
+}
+
+/* .btn-primary — shared solid primary CTA (round 18-3a1). Bakes the exact
+   properties every solid plum button repeated (pressable base, square
+   corners, plum-800 fill, plum-700 hover, press scale, white ink) so the
+   class lists stay short. Deliberately written as plain (unlayered) CSS to
+   mirror today's cascade: `.press`'s transform transition already wins over
+   `transition-colors`, and the active scale is the composed
+   press(0.97) × scale-utility(0.98) pair. Sizing/layout (h-*, w-*, px/py,
+   text-*, font-*) and any extras (shadows, disabled:*) stay in markup. */
+.btn-primary {
+  border-radius: 0;
+  background-color: var(--color-sadn-plum-800);
+  color: var(--color-white);
+  transition: transform 0.15s ease;
+}
+.btn-primary:hover {
+  background-color: var(--color-sadn-plum-700);
+}
+.btn-primary:active {
+  transform: scale(0.97);
+  scale: 0.98;
+}
+
+/* .card-hover — subtle lift for desktop pointer devices only.
+   Base is a whisper-soft shadow; hover adds translateY(-2px) + a soft plum
+   shadow over 300ms. Touch devices keep the flat card. */
+@media (hover: hover) {
+  .card-hover {
+    box-shadow:
+      0 1px 2px rgba(42, 28, 40, 0.06);
+    transition:
+      transform 300ms ease,
+      box-shadow 300ms ease;
+  }
+  .card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 14px 34px -14px rgba(42, 28, 40, 0.25);
+  }
+}
+
+/* ── SADN Polish Layer (round 4) ── */
+
+/* .sadn-sheet-scroll — refined scrollbar inside bottom sheets */
+.sadn-sheet-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--sadn-plum-200) transparent;
+}
+.sadn-sheet-scroll::-webkit-scrollbar {
+  width: 5px;
+}
+.sadn-sheet-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.sadn-sheet-scroll::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background-color: var(--sadn-plum-200);
+}
+
+/* .sadn-input — brand form field baseline (used by checkout + future forms) */
+.sadn-input {
+  height: 2.75rem;
+  width: 100%;
+  border-radius: 0;
+  border: 1px solid var(--sadn-plum-200);
+  background: var(--sadn-canvas);
+  padding-inline: 0.875rem;
+  font-size: 0.875rem;
+  color: var(--sadn-ink);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+  outline: none;
+}
+.sadn-input::placeholder {
+  color: color-mix(in oklab, var(--sadn-ink-soft) 50%, transparent);
+}
+.sadn-input:focus {
+  border-color: var(--sadn-plum-400);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--sadn-plum-400) 35%, transparent);
+}
+.sadn-input[aria-invalid='true'] {
+  border-color: #fca5a5;
+  background-color: color-mix(in oklab, #fef2f2 40%, var(--sadn-canvas));
+}
+
+/* .sadn-field-error — inline validation message */
+.sadn-field-error {
+  margin-top: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 11px;
+  color: #dc2626;
+}
+
+/* @keyframes sadn-fade-up — entrance for sheet content blocks */
+@keyframes sadn-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.sadn-fade-up {
+  animation: sadn-fade-up 0.35s ease both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .sadn-fade-up {
+    animation: none;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   ── SADN Polish Layer (round 4-d) ──
+   Styling-detail pass (Task 4-d, frontend-styling-expert).
+   Micro-detail utilities only — no logic, no animation changes.
+   100% append-only — delete this block to roll back.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* .price-num — tabular figures + a breath of tracking so prices align
+   across card grids and don't jitter when totals animate. */
+.price-num {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+/* Marquee hover-pause REMOVED (round 22, owner): "يفضل لووب" — the strip
+   must never stop, not even under hover/touch (a sticky :hover on mobile
+   had paused it indefinitely after a tap). .sadn-marquee-wrap keeps its
+   overflow/edge role; the keyframes stay infinite in the motion layer. */
+
+/* Focus-visible on pill buttons/chips: VERIFIED round 4-d — the global
+   `:focus-visible` rule (2px plum-400 outline, 2px offset) already exists
+   in the Brand Layer above and follows border-radius on modern browsers,
+   so pill buttons/chips are already covered. Intentionally NOT duplicated
+   here (add-only-if-missing contract). */
+
+/* .img-frame — 1px inset hairline (plum-100 @ low alpha) that gives
+   editorial imagery a quiet print-frame edge. Apply to the rounded,
+   overflow-hidden image container; the ::after inherits the radius,
+   paints above the image, and never intercepts pointers. */
+.img-frame {
+  position: relative; /* no-op on containers already `relative` */
+}
+.img-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px
+    color-mix(in oklab, var(--sadn-plum-100) 55%, transparent);
+  pointer-events: none;
+}
+
+/* .eyebrow-rule — small uppercase label with a short leading rule
+   (12px hairline before the text) as a quiet editorial accent. */
+.eyebrow-rule {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.eyebrow-rule::before {
+  content: "";
+  width: 12px;
+  height: 1px;
+  background: color-mix(in oklab, var(--sadn-plum-400) 65%, transparent);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   ── SADN Polish Layer (round 5-d) ──
+   Styling-detail pass (Task 5-d, frontend-styling-expert).
+   Micro-detail utilities only — no logic, no animation changes.
+   100% append-only — delete this block to roll back.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* .chip-inactive / .chip-active — shared pill-chip color tokens
+   (Shop category chips + any future filter chips). Color/surface/ink
+   tokens ONLY — no layout here: keep rounded-full, padding, size and
+   transition/active:scale in the component so chips can scale
+   independently. Focus ring comes from the global :focus-visible rule
+   (Brand Layer); press scale comes from the component. */
+.chip-inactive {
+  border-color: var(--sadn-plum-200);
+  background-color: transparent;
+  color: var(--sadn-ink);
+}
+.chip-inactive:hover {
+  border-color: var(--sadn-plum-800);
+}
+.chip-active {
+  border-color: var(--sadn-plum-800);
+  background-color: var(--sadn-plum-800);
+  color: #fff;
+  box-shadow:
+    0 4px 6px -1px color-mix(in oklab, var(--sadn-plum-800) 20%, transparent),
+    0 2px 4px -2px color-mix(in oklab, var(--sadn-plum-800) 20%, transparent);
+}
+
+/* .hairline-b — single-edge 1px rule using the exact oklab mix as the
+   (removed) standalone .hairline. Use it when the rule must live on the
+   bottom edge of a container (sticky app bars, list feet). */
+.hairline-b {
+  border-bottom: 1px solid
+    color-mix(in oklab, var(--sadn-plum-200) 60%, transparent);
+}
+
+/* .price-strike — compare-at ("was") price treatment: smaller, ink-soft,
+   single line-through, tabular figures so it aligns beside a .price-num
+   current price. Extracted from the inline `text-xs text-sadn-ink-soft
+   line-through` currently on ProductCard/ProductScreen (off-limits in
+   this pass) — apply to any new compare-at price for consistency. */
+.price-strike {
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: color-mix(in oklab, var(--sadn-ink-soft) 78%, transparent);
+  text-decoration: line-through;
+  font-variant-numeric: tabular-nums;
+}
+
+/* .price-sale — discounted "now" price (round 16-f, owner request):
+   extrabold + deepest plum so the eye lands on the value the customer
+   actually pays before it ever reaches the muted strikethrough.
+   Pair with .price-strike and an explicit font-size utility. */
+.price-sale {
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--sadn-plum-950);
+}
+/* ── SADN Bilingual Layer: EN/AR + RTL ─────────────────────────────────────
+ * Thmanyah covers Arabic natively across both headings and body text:
+ *  • Thmanyah Display for headings & display typography.
+ *  • Thmanyah Sans for body text, navigation & UI copy.
+ *  • html[dir="rtl"] flips the whole app via logical properties used in the
+ *    components (start-/end-/ps-/pe-/ms-/me-). Flex rows mirror natively.
+ *  • Arabic script must NEVER be letter-spaced (it breaks glyph joining) —
+ *    all tracking-* utilities are neutralized under RTL.
+ *  • The marquee track extends leftward in RTL, so the crawl is reversed.
+ */
+html[dir="rtl"] body {
+  font-family:
+    "Thmanyah Sans",
+    ui-sans-serif,
+    system-ui,
+    "Segoe UI",
+    Tahoma,
+    sans-serif;
+}
+html[dir="rtl"] .font-sadn-display {
+  font-family:
+    "Thmanyah Display",
+    var(--font-display);
+}
+/* Arabic must not be letter-spaced — neutralize every tracking utility. */
+html[dir="rtl"] [class*="tracking-"] {
+  letter-spacing: normal !important;
+}
+/* Uppercase is a no-op for Arabic — also relax it so Latin fragments inside
+   AR copy (e.g. SADN10) don't shout. */
+html[dir="rtl"] [class*="uppercase"] {
+  text-transform: none;
+}
+/* Numbers inside AR text: keep tabular figures aligned with $ prices. */
+html[dir="rtl"] .price-num {
+  direction: ltr;
+  unicode-bidi: embed;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   ── SADN Polish Layer (round 6-d) ──
+   Styling-detail pass (Task 6-d, frontend-styling-expert).
+   AR/RTL typography rhythm, reduced-motion live-dot guard, fading-edge
+   hairline utility. 100% append-only — delete this block to roll back.
+   Earlier layers (Brand, rounds 2–5-d, 6-a bilingual) untouched.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* 1 · AR typography rhythm — Arabic script carries more ascender/descender
+   traffic than Latin and reads cramped on the 1.5 base. Raised ONLY under
+   RTL, only for elements that INHERIT body leading (labels, pills, list
+   rows, small copy); explicit leading-* utilities elsewhere are untouched.
+   Verified: fixed-height pills/buttons (h-9/h-10/h-11) are flex-centered,
+   so nothing clips at 1.7. */
+html[dir="rtl"] body {
+  line-height: 1.7;
+}
+
+/* 2 · AR display headings — Thmanyah Display styling rules. Two adjustments, RTL only:
+   • Weight +1 step (400 → 500) for display headings that carry no explicit
+     font-weight utility — the bold hero wordmark/hero (Latin "SADN") and
+     the semibold footer lockup are excluded via :not() so they keep 700/600.
+   • One optical size step for the large editorial headings (4xl/3xl/2xl).
+     Tailwind's line-heights are left alone — the extra leading that leaves
+     behind is correct for Arabic display type.
+   The hero text-[68px] wordmark is Latin and QA'd balanced → no size change;
+   the AR product-name (text-[28px]) and story quote QA'd fine → untouched. */
+html[dir="rtl"] .font-sadn-display:not(.font-bold):not(.font-semibold):not(.font-medium) {
+  font-weight: 500;
+}
+html[dir="rtl"] .font-sadn-display.text-4xl {
+  font-size: 2.5rem; /* 36px → 40px */
+}
+html[dir="rtl"] .font-sadn-display.text-3xl {
+  font-size: 2.125rem; /* 30px → 34px */
+}
+html[dir="rtl"] .font-sadn-display.text-2xl {
+  font-size: 1.75rem; /* 24px → 28px */
+}
+
+/* 3 · .hairline-fade-t — single-edge top rule that fades to transparent at
+   the horizontal ends (the TopBar's round-4-d gradient strip as a
+   self-contained utility for sticky bars). Pair with a positioned element
+   (the sticky add-bar is sticky = positioned); paint-only, never
+   intercepts pointers. Symmetric gradient → identical in RTL. */
+.hairline-fade-t {
+  position: relative; /* no-op on already-positioned elements */
+}
+.hairline-fade-t::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  inset-inline: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--sadn-plum-100),
+    transparent
+  );
+  pointer-events: none;
+}
+
+/* 4 · Marquee (AR reversal) — verified round 6-d: the two duplicate spans
+   stay identical under the 6-a tracking/uppercase neutralization, so the
+   reversed crawl loops with no seam. No fix needed; noted so it isn't
+   re-audited every round. */
+
+/* 5 · .price-num under RTL — verified round 6-d: the LTR embed renders
+   "$148" correctly; and per the Unicode Bidi Algorithm, Arabic-Indic clock
+   times ("٢:٤١ م") resolve to the same visual order with or without the
+   embed (digits land on level 2 and the م marker on level 1 in BOTH the
+   RTL paragraph and the LTR embedding), so the TrackOrderSheet timeline
+   stamps render correctly. No fix needed. The live-dot pulse guard is
+   handled in-markup via motion-reduce:animate-none on the two ping spans. */
+
+/* ═══════════════════════════════════════════════════════════════════
+   ── SADN Polish Layer (round 7-d) ──
+   Styling-detail pass (Task 7-d, frontend-styling-expert).
+   Visual-only polish for the round-7-a features: size-guide sheet,
+   city combobox, install banner, promo pending chip.
+   100% append-only — delete this block to roll back.
+   Earlier layers (Brand, rounds 2–6-d) untouched.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* 1 · .sheet-grab — iOS-style grab handle at the top edge of a bottom
+   sheet (app feel). Paint-only ::before, never intercepts pointers.
+   Centered via inset-inline + auto margins → symmetric, RTL-safe.
+   Apply to the rounded-t-* sheet panel itself. */
+.sheet-grab {
+  position: relative; /* no-op on sheets already positioned */
+}
+.sheet-grab::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  inset-inline: 0;
+  margin-inline: auto;
+  width: 36px;
+  height: 4px;
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--sadn-plum-200) 75%, transparent);
+  pointer-events: none;
+}
+
+/* 2 · .sg-table — size-guide measurement table details:
+   • 1px hairline under the header row (plum-200 @ 45% — a half-step
+     quieter than .hairline-t so it reads as a table grid line, not a
+     section rule) — declared on the th cells so it holds regardless of
+     border-collapse mode.
+   • Header row carries the .bg-grain paper texture in-markup (combines
+     with its bg-sadn-plum-50/80 wash). */
+.sg-table thead th {
+  border-bottom: 1px solid
+    color-mix(in oklab, var(--sadn-plum-200) 45%, transparent);
+}
+
+/* 2b · .fade-up-d1/.fade-up-d2/.fade-up-d3 — stagger delays for .sadn-fade-up.
+   Declared UNLAYERED and AFTER the round-4 `.sadn-fade-up { animation: … }`
+   shorthand so the delay survives the shorthand's implicit animation-delay:0
+   reset (verified 7-d: a layered Tailwind [animation-delay:…] utility loses
+   to the unlayered shorthand). Pair e.g.:
+     <div className="sadn-fade-up fade-up-d2 …">
+   With reduced motion the round-4 guard sets animation: none — a lone delay
+   starts nothing. */
+.fade-up-d1 {
+  animation-delay: 60ms;
+}
+.fade-up-d2 {
+  animation-delay: 120ms;
+}
+.fade-up-d3 {
+  animation-delay: 180ms;
+}
+
+/* 3 · .promo-chip-active — quiet celebration on an ACTIVE promo chip's
+   BadgePercent icon: a soft plum halo that breathes once every 2.6s.
+   padding grows the halo tile, margin -padding keeps flow size identical
+   (zero layout shift). Gated behind prefers-reduced-motion. */
+.promo-chip-active {
+  border-radius: 999px;
+  padding: 4px;
+  margin: -4px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .promo-chip-active {
+    animation: sadn-promo-halo 2.6s ease-in-out infinite;
+  }
+}
+@keyframes sadn-promo-halo {
+  0%,
+  100% {
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--sadn-plum-200) 55%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 0 6px color-mix(in oklab, var(--sadn-plum-200) 28%, transparent);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .promo-chip-active {
+    animation: none;
+  }
+}
+
+/* 4 · City combobox entrance/selection details are handled in-markup with
+   the already-available tw-animate utilities (animate-in fade-in
+   slide-in-from-top-2 + motion-reduce:animate-none) and inset ring
+   classes — no new CSS needed here (documented to avoid re-audit). */
+
+/* ═══════════════════════════════════════════════════════════════════
+   ── SADN Round 13 Layer ──
+   • .sadn-step-fade — the SIMPLE checkout step transition the owner asked
+     for ("الانميشن ... عايزها بسيطة"): a plain 220ms fade/rise, nothing else.
+   • .admin-scope — the dashboard keeps its light studio palette even when
+     the storefront is in dark mode (the toggle lives on the storefront).
+   ═══════════════════════════════════════════════════════════════════ */
+@keyframes sadn-step-fade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.sadn-step-fade {
+  animation: sadn-step-fade 0.22s ease-out both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .sadn-step-fade {
+    animation: none;
+  }
+}
+
+.admin-scope {
+  --sadn-plum-950: #2A1C28;
+  --sadn-plum-900: #3A2637;
+  --sadn-plum-800: #52314e;
+  --sadn-plum-700: #5C405A;
+  --sadn-plum-600: #6E4F6B;
+  --sadn-plum-400: #A388A0;
+  --sadn-plum-200: #D5C7D2;
+  --sadn-plum-100: #EDE6EB;
+  --sadn-plum-50: #F7F4F6;
+  --sadn-ivory: #FAF8F6;
+  --sadn-stone: #F1EDE9;
+  --sadn-ink: #1C1719;
+  --sadn-ink-soft: #6B6266;
+  --sadn-canvas: #FFFFFF;
+  color-scheme: light;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   ── SADN Round 16-b Layer (storefront visual refinement) ──
+   Task 16-b — editorial "less is more" pass. Append-only: delete this
+   block to roll back. Everything below is paint-only (no layout).
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* 1 · .shimmer — quieter premium sweep. The round-3 band ran at full
+   plum-100 (a hard shadow sliding over the plum-50 base). A 55% wash
+   keeps the identical 1.4s motion with an editorial, barely-there
+   glide. The plum vars flip under `.dark`, so the sweep stays quiet
+   on the dark canvas too (no extra override needed). */
+.shimmer::after {
+  background: linear-gradient(
+    90deg,
+    color-mix(in oklab, var(--sadn-plum-100) 0%, transparent),
+    color-mix(in oklab, var(--sadn-plum-100) 55%, transparent),
+    color-mix(in oklab, var(--sadn-plum-100) 0%, transparent)
+  );
+}

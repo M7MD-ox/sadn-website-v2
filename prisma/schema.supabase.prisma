@@ -1,0 +1,152 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// SADN catalog — JSON-encoded array fields (SQLite has no primitive lists)
+model Product {
+  id             String   @id @default(cuid())
+  slug           String   @unique
+  name           String
+  nameAr         String
+  tagline        String?
+  description    String
+  category       String // Category.slug — managed in the admin dashboard
+  price          Float
+  compareAtPrice Float?
+  currency       String   @default("EGP") // Egyptian pound — owner directive
+  images         String // JSON array of image URLs (/products/*.jpg or /uploads/*)
+  colors         String // JSON array of { name, hex }
+  sizes          String // JSON array of size labels
+  hiddenSizes    String   @default("[]") // JSON array of size labels hidden from the product page (round 16)
+  sortOrder      Int      @default(0) // drag & drop ordering from the dashboard (round 16)
+  featured       Boolean  @default(false)
+  isNew          Boolean  @default(false)
+  stock          Int      @default(0)
+  rating         Float    @default(4.8)
+  reviewsCount   Int      @default(0)
+  active         Boolean  @default(true) // admin can hide a product without deleting it
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+// Storefront sections — full CRUD from the admin dashboard (round 10)
+model Category {
+  id        String   @id @default(cuid())
+  slug      String   @unique
+  labelEn   String
+  labelAr   String
+  order     Int      @default(0) // chip order on the storefront
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Singleton row of store-wide settings the owner edits from the dashboard
+model Setting {
+  id                String   @id @default("singleton")
+  whatsappNumber    String   @default("") // orders are sent here via wa.me, e.g. "201001234567"
+  adminPasswordHash String   @default("") // scrypt "salt:hash" — changeable in the dashboard
+  currency          String   @default("USD")
+  // Announcement banner above the header — text + visibility, owner-controlled
+  bannerVisible     Boolean  @default(true)
+  bannerTextEn      String   @default("10% OFF your first order · code SADN10")
+  bannerTextAr      String   @default("خصم ١٠٪ على أول طلب · كود SADN10")
+  // Delivery — flat fee the owner sets from the dashboard (EGP)
+  shippingFee       Float    @default(60)
+  // Promo code — single owner-controlled code (round 13)
+  promoEnabled      Boolean  @default(true)
+  promoCode         String   @default("SADN10")
+  promoPercent      Float    @default(10)
+  promoMin          Float    @default(0)
+  // Hero slideshow (round 13): image URLs + rotation interval (seconds)
+  heroImages        String   @default("[\"/products/hero-abaya.png\"]")
+  heroInterval      Int      @default(6)
+  // Footer contacts (round 13): phone numbers + brand page URLs (JSON)
+  phones            String   @default("[]")
+  socials           String   @default("{\"instagram\":\"\",\"facebook\":\"\",\"tiktok\":\"\"}")
+  // Payment methods (round 15) — numbers customers transfer to, shown at
+  // checkout when the matching method is picked. WhatsApp is NOT a payment
+  // method — it is the confirmation/communication channel only.
+  instapayNumber    String   @default("")
+  vodafoneNumber    String   @default("")
+  // Meta (Facebook) Pixel — owner-set from the dashboard (round 27). Digits
+  // only, e.g. "1234567890123456". Empty = tracking stays off entirely.
+  fbPixelId         String   @default("")
+  // Order stage checklist (round 15) — JSON array of
+  // { id, en, ar, tone: "ok" | "warn" }, fully owner-editable from Settings.
+  orderStages       String   @default("[]")
+  // Home marquee strip (round 16) — owner-controlled text + optional CTA button
+  marquee           String   @default("{\"enabled\":true,\"textEn\":\"Where modesty meets its masterpiece · Loose by design · New season\",\"textAr\":\"حيث تلتقي السترة بتحفتها · واسعة وقصّتها مريحة · موسم جديد\",\"ctaHref\":\"\",\"ctaLabelEn\":\"\",\"ctaLabelAr\":\"\"}")
+  // Size guide (round 16) — cm-only rows the owner edits from Settings
+  sizeGuide         String   @default("[]")
+  // Product-page collapsible sections (round 16) — show/hide, titles, bodies
+  productSections   String   @default("[]")
+  // Policy pages (round 16) — shipping/purchase, returns, privacy content
+  policies          String   @default("[]")
+  // WhatsApp review chats (round 17) — JSON array of separate conversations,
+  // each with its own customer + messages; fully owner-editable in Settings
+  chatThreads       String   @default("[]")
+  updatedAt         DateTime @updatedAt
+}
+
+// Customer-review wall — 16:9 screenshots of real chat conversations,
+// managed from the dashboard (round 11)
+model Review {
+  id        String   @id @default(cuid())
+  image     String // screenshot URL (/uploads/* or external)
+  caption   String   @default("") // optional line under/over the card
+  active    Boolean  @default(true) // hidden from the storefront when false
+  order     Int      @default(0) // card order on the storefront
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Inventory ledger (round 16) — every stock change is an append-only row.
+// qty is SIGNED: + intake (factory/manual/return), − sold via orders.
+// Product.stock stays the denormalized live balance (floored at 0).
+model StockMovement {
+  id          String   @id @default(cuid())
+  productSlug String
+  productName String
+  color       String   @default("")
+  qty         Int // signed: + in / − out
+  reason      String // "factory" | "order" | "manual" | "return"
+  orderNumber String   @default("")
+  note        String   @default("")
+  createdAt   DateTime @default(now())
+}
+
+// SADN orders — customer snapshot + JSON-encoded line items (SQLite has no primitive lists)
+model Order {
+  id             String   @id @default(cuid())
+  number         String   @unique // "SADN-######" shown to the customer
+  customerName   String
+  phone          String
+  city           String
+  address        String
+  notes          String?
+  items          String // JSON array of { slug, name, image, price, size, color, qty }
+  subtotal       Float
+  discount       Float    @default(0) // promo discount, always recomputed server-side
+  promoCode      String?  // normalized code, e.g. "SADN10"
+  shipping       Float
+  total          Float
+  currency       String   @default("EGP")
+  paymentMethod  String   @default("cod") // "cod" | "instapay" | "vodafone" (round 15)
+  paymentSenderPhone String @default("") // number the transfer was sent FROM (instapay/vodafone)
+  status         String   @default("payment_review") // current stage id — from the owner's editable checklist
+  stagesDone     String   @default("[]") // JSON array of completed stage ids (the green checks)
+  source         String   @default("whatsapp") // "whatsapp" (storefront checkout) | "manual" (dashboard-registered)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}

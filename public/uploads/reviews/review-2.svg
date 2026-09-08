@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#EFE9E1"/>
+  <!-- Header -->
+  <rect width="1600" height="110" fill="#075E54"/>
+  <polyline points="58,42 34,55 58,68" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="140" cy="55" r="40" fill="#FFFFFF"/>
+  <text x="140" y="70" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="42" font-weight="700" fill="#4B3249">S</text>
+  <text x="205" y="48" font-family="'Segoe UI', Arial, sans-serif" font-size="34" font-weight="700" fill="#FFFFFF">SADN · سدن</text>
+  <text x="205" y="86" font-family="'Segoe UI', Arial, sans-serif" font-size="24" fill="#B8E0DB">online</text>
+  <circle cx="1500" cy="42" r="6" fill="#FFFFFF"/><circle cx="1500" cy="62" r="6" fill="#FFFFFF"/><circle cx="1500" cy="82" r="6" fill="#FFFFFF"/>
+  <!-- Incoming bubble 1 -->
+  <rect x="36" y="150" width="880" height="100" rx="26" fill="#FFFFFF"/>
+  <text x="66" y="212" font-family="'Segoe UI', Arial, sans-serif" font-size="32" fill="#111B21">Just received my Onyx abaya — the drape is unreal ✨</text>
+  <text x="865" y="234" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="23" fill="#667781">6:02 PM</text>
+  <!-- Incoming bubble 2 -->
+  <rect x="36" y="280" width="820" height="150" rx="26" fill="#FFFFFF"/>
+  <text x="66" y="342" font-family="'Segoe UI', Arial, sans-serif" font-size="32" fill="#111B21">The fabric is so substantial, and the loose cut</text>
+  <text x="66" y="392" font-family="'Segoe UI', Arial, sans-serif" font-size="32" fill="#111B21">is exactly what I was looking for</text>
+  <text x="805" y="414" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="23" fill="#667781">6:03 PM</text>
+  <!-- Incoming bubble 3 -->
+  <rect x="36" y="460" width="760" height="100" rx="26" fill="#FFFFFF"/>
+  <text x="66" y="522" font-family="'Segoe UI', Arial, sans-serif" font-size="32" fill="#111B21">Ordering the plum one for the engagement 🤍</text>
+  <text x="745" y="544" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="23" fill="#667781">6:03 PM</text>
+  <!-- Outgoing bubble -->
+  <rect x="800" y="620" width="760" height="150" rx="26" fill="#D9FDD3"/>
+  <text x="830" y="682" font-family="'Segoe UI', Arial, sans-serif" font-size="32" fill="#111B21">Thank you so much! You'll love the satin</text>
+  <text x="830" y="732" font-family="'Segoe UI', Arial, sans-serif" font-size="32" fill="#111B21">cuffs on the plum 🕊️</text>
+  <polyline points="1478,746 1490,752 1478,758" fill="none" stroke="#53BDEB" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="1492,746 1504,752 1492,758" fill="none" stroke="#53BDEB" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="1470" y="754" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="23" fill="#667781">6:05 PM</text>
+  <!-- Input bar -->
+  <rect x="30" y="800" width="1330" height="76" rx="38" fill="#FFFFFF" stroke="#E0DCD4" stroke-width="2"/>
+  <text x="76" y="848" font-family="'Segoe UI', Arial, sans-serif" font-size="30" fill="#8696A0">Message</text>
+  <circle cx="1450" cy="838" r="38" fill="#00A884"/>
+  <text x="1450" y="851" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="32" fill="#FFFFFF">🎤</text>
+</svg>
